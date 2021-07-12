@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block title %}Post{% endblock %}
+
+{% block content %}
+
+
+<form method="POST" action="" enctype="multipart/form-data"><!--enctype necessary for pics, CS-errors no good-->
+	{{ form.hidden_tag() }}
+	<fieldset class="form-group">
+
+		<div class="form-group">
+			{{ form.title.label(class="form-control-label") }}
+			{% if form.title.errors %}
+
+				{{ form.username(class="form-control form-control-lg is-invalid") }}
+				<div class="invalid-feedback">
+					{% for error in form.title.errors %}
+						<span>{{ error }}</span>
+					{% endfor %}
+				</div>
+			{% else %}
+				{{ form.title(class="form-control form-control-lg") }}
+			{% endif %}
+
+		</div>
+		<div class="form-group">
+			{{ form.content.label(class="form-control-label") }}
+			{% if form.content.errors %}
+
+				{{ form.content(class="form-control form-control-lg is-invalid") }}
+				<div class="invalid-feedback">
+					{% for error in form.content.errors %}
+						<span>{{ error }}</span>
+					{% endfor %}
+				</div>
+			{% else %}
+				{{ form.content(class="form-control form-control-lg") }}
+			{% endif %}
+		</div>
+		{{ form.picture.label() }}
+		{{ form.picture(class="form-control-file") }}
+		{% if form.picture.errors %}
+			{% for error in form.picture.errors %}
+				<span class="text-danger">{{ error }}</span></br>
+			{% endfor %}
+		{% endif %}
+
+		{% if post %}
+		{% if post.screenshot %}
+		<img src="{{ url_for('static', filename='screenshots/' + post.screenshot) }}">
+		{% endif %}
+		{% endif %}
+	</fieldset>
+	<div class="form-group">
+		{{ form.submit(class="btn btn-outline-info") }}
+	</div>
+</form>
+
+
+{% endblock %}

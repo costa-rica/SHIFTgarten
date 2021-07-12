@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+
+
+        <div class="form-group">
+            Select Restaurant:
+            {{ form.restaurant(class="form-control form-control-lg") }}
+        </div>
+
+        <br/>
+        <div class="form-group">
+            Select date:
+            <div class='col-xs-4 input-group date'>
+                {{ form.dmrDate(type="date", class="form-control form-control-lg") }}
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+            </div>
+        </div>
+
+        <br/>
+        <div class="form-group">
+            {{ form.viewDmr(class="btn btn-outline-info") }}
+            {{ form.newDmr(class="btn btn-outline-info") }}
+        </div>
+
+    </form>
+    <hr>
+    <a href="{{ url_for('main.addEmployee', onlyActive=True) }}"><h5>Employees</h5></a>
+    <a href="{{ url_for('main.reports') }}"><h5>Manager Reports</h5></a>
+
+	{% if current_user.permission %}
+	<hr>
+	<a href="{{ url_for('main.database') }}"><h5>Database</h5></a>
+	<a href="{{ url_for('main.userPermissions') }}"><h5>User Permissions</h5></a>
+	<a href="{{ url_for('main.addRestaurant') }}"><h5>Add Restaurant</h5></a>
+    {% endif %}
+
+
+
+{% endblock %}

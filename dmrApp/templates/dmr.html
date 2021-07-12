@@ -1,0 +1,412 @@
+{% extends 'layoutNoHrLine.html' %}
+
+{% block title %}DMR for {{ dmrRestaurant }}{% endblock %}
+
+{% block content %}
+<div class="content-section">
+    <div class="headerInfo mb-0">
+        <div class="media">
+            <!--            <img class="rounded-circle account-img" src="{{ image_file }}"> -->
+            <div class="media-body">
+                <h4>{{ current_user.username }}</h4>
+                <p class="text-secondary">{{ current_user.email }}</p>
+                <div class="restaurantName mt-5"><h2>{{ dmrRestaurant }}</h2></div>
+            </div>
+        </div>
+
+        <div class="emptySpace"></div>
+        <div class="headerPic">
+            <img src="\static\profile_pics\cbc.logo.jpg" class="rounded float-right" alt="...">
+        </div>
+
+    </div>
+
+
+    <form method="POST" action="" enctype="multipart/form-data"><!--enctype necessary for pics, CS-errors no good-->
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+
+
+
+        <div class="dmrLegend mt-0">
+
+            <div class="dmrLegend1-1"><h4 class="text-secondary">{{ legend }}</h4></div>
+            <div class="emptySpace"></div>
+            <div class="dmrLegend1-2">
+                <h4>{{ dateObjForDmr }}</h4>
+            </div>
+            <div class="emptySpace"></div>
+        </div>
+
+        <hr>
+
+        <div class="griddmrTop">
+
+
+            <div class="dmrTop1-1">
+                <div class="dmrLabel">{{ form.startCash.label(class="form-control-label") }}</div>
+                {% if dmrHtmlFlag %}
+				<div class="dmrForm">
+                    {% if form.startCash.errors %}
+                    {{ form.startCash(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.startCash.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.startCash(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.startCash(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+            <div class="emptySpace"></div>
+
+            <div class="dmrTop1-2">
+                <div class="dmrLabel">{{ form.sales.label(class="form-control-label") }}</div>
+				{% if dmrHtmlFlag %}
+                <div class="dmrForm">
+                    {% if form.sales.errors %}
+                    {{ form.sales(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.sales.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.sales(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.sales(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+            <div class="dmrTop2-1">
+                <div class="dmrLabel">{{ form.payout.label(class="form-control-label") }}</div>
+                {% if dmrHtmlFlag %}
+				<div class="dmrForm">
+                    {% if form.payout.errors %}
+                    {{ form.payout(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.payout.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.payout(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.payout(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+            <div class="emptySpace"></div>
+
+            <div class="dmrTop2-2">
+                <div class="dmrLabel">{{ form.compSales.label(class="form-control-label") }}</div>
+                {% if dmrHtmlFlag %}
+				<div class="dmrForm">
+                    {% if form.compSales.errors %}
+                    {{ form.compSales(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.compSales.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.compSales(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.voidSales(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+            <div class="dmrTop3-1">
+
+            </div>
+
+            <div class="emptySpace"></div>
+
+            <div class="dmrTop3-2">
+                <div class="dmrLabel">{{ form.voidSales.label(class="form-control-label") }}</div>
+                {% if dmrHtmlFlag %}
+				<div class="dmrForm">
+                    {% if form.voidSales.errors %}
+                    {{ form.voidSales(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.voidSales.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.voidSales(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.voidSales(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+            <div class="dmrTop4-1">
+                <div class="dmrLabel">{{ form.cashDrop.label(class="form-control-label") }}</div>
+                {% if dmrHtmlFlag %}
+				<div class="dmrForm">
+                    {% if form.cashDrop.errors %}
+                    {{ form.cashDrop(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.cashDrop.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.cashDrop(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.cashDrop(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+            <div class="emptySpace"></div>
+
+            <div class="dmrTop4-2">
+
+            </div>
+
+
+            <div class="dmrTop5-1">
+                <div class="dmrLabel">{{ form.expectedCash.label(class="form-control-label") }}</div>
+                {% if dmrHtmlFlag %}
+				<div class="dmrForm">
+                    {% if form.expectedCash.errors %}
+                    {{ form.expectedCash(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.expectedCash.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.expectedCash(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.expectedCash(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+            <div class="emptySpace"></div>
+
+            <div class="dmrTop5-2">
+                <div class="dmrLabel">{{ form.creditCardTip.label(class="form-control-label") }}</div>
+                {% if dmrHtmlFlag %}
+				<div class="dmrForm">
+                    {% if form.creditCardTip.errors %}
+                    {{ form.creditCardTip(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.creditCardTip.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.creditCardTip(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.creditCardTip(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+            <div class="dmrTop6-1">
+                <div class="dmrLabel">{{ form.numHoursWorked.label(class="form-control-label") }}</div>
+                <div class="dmrForm">
+
+                    {{ form.numHoursWorked(class="form-control form-control-sm", required=False, readonly=true) }}
+
+                </div>
+            </div>
+
+            <div class="emptySpace"></div>
+
+            <div class="dmrTop6-2">
+                <div class="dmrLabel">{{ form.cashTip.label(class="form-control-label") }}</div>
+                {% if dmrHtmlFlag %}
+				<div class="dmrForm">
+                    {% if form.cashTip.errors %}
+                    {{ form.cashTip(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.cashTip.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.cashTip(class="form-control form-control-sm", required=False) }}
+                    {% endif %}
+                </div>
+				{% else %}
+				{{ form.cashTip(class="form-control form-control-sm", required=False, readonly=true) }}
+				{% endif %}
+            </div>
+
+
+            <div class="dmrTop7-1">
+				{% if restaurantGroupId %}
+                <div class="dmrLabel">Bartender Tips/Hour (Shipgarten)</div>
+				{% else %}
+				<div class="dmrLabel">{{ form.bartenderTipsPerHour.label(class="form-control-label") }}</div>
+				{% endif %}
+                <div class="dmrForm">
+
+                    {{ form.bartenderTipsPerHour(class="form-control form-control-sm", required=False, readonly=true) }}
+
+                </div>
+            </div>
+
+            <div class="emptySpace"></div>
+
+            <div class="dmrTop7-2">
+                <div class="dmrLabel">{{ form.tip.label(class="form-control-label") }}</div>
+                <div class="dmrForm">
+
+                    {{ form.tip(class="form-control form-control-sm", required=False, readonly=true) }}
+
+                </div>
+            </div>
+
+
+            <div class="dmrTop8-1">
+				{% if restaurantGroupId %}
+				<div class="dmrLabel">Apprentice Tips/Hour (Shipgarten)</div>
+				{% else %}
+                <div class="dmrLabel">{{ form.appTipsPerHour.label(class="form-control-label") }}</div>
+				{% endif %}
+                <div class="dmrForm">
+
+                    {{ form.appTipsPerHour(class="form-control form-control-sm", required=False, readonly=true) }}
+                </div>
+            </div>
+
+            <div class="emptySpace"></div>
+
+            <div class="dmrTop8-2">
+				{% if restaurantGroupId %}
+				<div class="dmrLabel">Sum of restaurant wages</div>
+				{% else %}
+                <div class="dmrLabel">{{ form.wages.label(class="form-control-label") }}</div>
+				{% endif %}
+                <div class="dmrForm">
+
+                    {{ form.wages(class="form-control form-control-sm", required=False, readonly=true) }}
+                </div>
+            </div>
+
+        </div>
+
+        <br/>
+		{% if dmrHtmlFlag==True %}
+        <div class="form-group">
+            {{ form.dmrSubmit(class="btn btn-outline-info") }}
+        </div>
+		{% endif %}
+
+        <br/>
+        <hr>
+        <h3>Empoyee shifts</h3>
+        <br/>
+        <table class="shiftTable" >
+            <tbody>
+            <tr>
+                <th>Role</th>
+                <th>Name</th>
+				{% if not dmrHtmlFlag %}
+				<th>Restaurant</th>
+				{% endif %}
+                <th>Schedule</th>
+                <th>Time start</th>
+                <th>Time off</th>
+                <th>Hours</th>
+                <th>Tips($)</th>
+				<th>Wages($)</th>
+				<th>Tips($)+Wages($)</th>
+
+            </tr>
+		{% for i in range(0, shiftCount) %}
+            <tr>
+
+                <td><input type="text" class="shiftRoles form-control-sm"
+                           placeholder="{{ shiftRolesList[i][0] }}" readonly></td>
+                <td><input type="text" class="shiftEmpName form-control-sm"
+                           placeholder="{{ shiftNamesList[i] }}" readonly></td>
+                {% if not dmrHtmlFlag %}
+				<td><input type="text" class="shiftRes form-control-sm"
+                           placeholder="{{ shiftResList[i] }}" readonly></td>
+				{% endif %}
+                <td><input type="text" class="shiftScheduleTime form-control-sm" name="shiftScheduleTime"
+                placeholder="{{ shiftSchedTimeList[i] }}" readonly></td>
+                <td><input type="text" class="shiftStartTime form-control-sm" name="shiftScheduleTime"
+                placeholder="{{ shiftTimeStartList[i] }}" readonly></td>
+                <td><input type="text" class="shiftOffTime form-control-sm" name="shiftOffTime"
+                placeholder="{{ shiftTimeOffList[i] }}" readonly></td>
+                <td><input type="text" class="shiftHours form-control-sm" name="shiftHours"
+                           placeholder="{{ shiftHoursWorkedList[i] }}" readonly></td>
+
+                <td><input type="text" class="shiftTips form-control-sm" name="shiftTips"
+                           placeholder="{{ shiftTipList[i] }}" readonly></td>
+                <td><input type="text" class="shiftWages form-control-sm" name="shiftWages"
+                           placeholder="{{ shiftWagesList[i] }}" readonly></td>
+				<td><input type="text" class="tipsAndWages form-control-sm" name="tipsAndWages"
+				   placeholder="{{ shiftWagePlusTipList[i] }}" readonly></td>
+                
+				<td>
+				{% if dmrHtmlFlag %}
+				<button type="submit" class="btn btn-primary" name="delete shift"
+                            value="{{ shiftIdList[i] }}">delete shift</button>
+				{% endif %}
+				</td>
+
+
+            </tr>
+		{% endfor %}
+			{% if dmrHtmlFlag %}
+			<tr>
+
+            <td><input type="text" class="shiftRoles form-control-sm" name="role" id="role" list="role-list">
+            <datalist id="role-list">
+                {% for h in roles %}
+                <option>{{ h }}</option>
+                {% endfor %}
+            </datalist></td>
+            <td><input type="text" class="shiftEmpName form-control-sm" name="name" id="name" list="empNameList">
+            <datalist id="empNameList">
+                {% for i in empNames %}
+                    <option>{{ i }}</option>
+                {% endfor %}
+            </datalist></td>
+            <td>{{ shiftForm.schedTime( class="shiftScheduleTime form-control-sm") }}</td>
+            <td>{{ shiftForm.timeStart(type="time", class="shiftStartTime form-control-sm") }}</td>
+                <td>{{ shiftForm.timeOff(type="time", class="shiftOffTime form-control-sm") }}</td>
+
+
+			</tr>
+			{% endif %}
+            </tbody>
+        </table>
+
+
+        <br/>
+		{% if dmrHtmlFlag %}
+        <div class="form-group">
+            {{ shiftForm.shiftSubmit(class="btn btn-outline-info") }}
+        </div>
+		{% endif %}
+    </form>
+
+</div>
+
+
+{% endblock %}

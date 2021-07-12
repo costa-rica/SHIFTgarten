@@ -1,0 +1,7 @@
+{
+	"SECRET_KEY_DMR": "f8zx6WoDCJOxXrSQznGXCg",
+	"SQLALCHEMY_DATABASE_URI_DMR": "sqlite:///dmrApp.db",
+	"MAIL_PASSWORD_CBC": "uugoryerbzwgocgb",
+	"MAIL_USERNAME_CBC": "ricacbc@gmail.com"
+}
+

@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+<script src="bootstrap-autocomplete.min.js"></script>
+{% block title %}DMR for restaurant was here{% endblock %}
+
+{% block content %}
+
+<!-- Datatable -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
+
+
+<br/>
+<form method="POST" action="" enctype="multipart/form-data"><!--enctype necessary for pics, CS-errors no good-->
+    {{ form.hidden_tag() }}
+    <div class="row">
+        <div class="col-4"><h5>Enter new restaurant name</h5>
+            {{ form.name(class="form-control form-control-md", required=False) }}
+        </div>
+        <div class="form-group col-6 mt-4 ml-5">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </div>
+</form>
+<br/>
+    <br/>
+<div class="col-8">
+
+    <table id="proxies" class="display table nowrap responsive" style="width: 100%">
+        <thead>
+        <tr>
+            <th style="width:25%"> Restaurant ID</th>
+            <th style="width:75%"> Restaurant name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in restaurants %}
+        <tr>
+            {% for i in row %}
+            <td>{{ i }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript">
+    $('#proxies').DataTable();
+
+
+</script>
+{% endblock %}

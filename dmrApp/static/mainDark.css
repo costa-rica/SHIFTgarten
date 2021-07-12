@@ -1,0 +1,334 @@
+body { background-color: rgb(150, 150, 150);
+  color: #333333;
+  margin-top: 5rem;
+}
+.siteBgColor{ background-color: rgb(150, 150, 150);}
+/* impacts: layout.html on <body, <main 
+/*.mainColor{background-color: rgb(126, 31, 14);}
+.contentColor{background-color: rgb(126, 31, 14);}
+*/
+
+.bg-steel { 
+  background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+
+
+/* Modify the backgorund color to a maroonish color
+.navbar-custom {
+    background-color: rgb(126, 31, 14);
+    opacity:0.99;
+}*/
+
+
+.content-section { 
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.rm-border { border: none;
+	background: none;}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+/*Corey's classes */
+
+
+/*home page*/
+.homeDescription{ font-size:150%;}
+
+
+/*start Nick miscellaneous*/
+.strokeme {
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.headerInfo{display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-areas:
+"mediaInfo emptySpace headerPic"}
+.headerPic {
+    max-width: 100%;
+    max-height: 100%;}
+/*End Nick miscellaneous*/
+
+
+
+/*Start DMR*/
+.dmrLegend {display:grid;
+grid-template-columns: 40% 1% 25% auto;
+grid-template-areas:
+"dmrLegend1-1 emptySpace dmrLegend1-2 emptySpace"}
+.griddmrTop {display: grid;
+    grid-template-columns: 45% 10% 45%;
+    grid-template-areas:
+    "dmrTop1-1 emptySpace  dmrTop1-2"
+    "dmrTop2-1 emptySpace dmrTop2-2"
+    "dmrTop3-1 emptySpace dmrTop3-2"
+    "dmrTop4-1 emptySpace dmrTop4-2"
+    "dmrTop5-1 emptySpace dmrTop5-2"
+    "dmrTop6-1 emptySpace dmrTop6-2"
+    "dmrTop7-1 emptySpace dmrTop7-2"
+    "dmrTop8-1 emptySpace dmrTop8-2"
+    }
+.dmrTop1-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 5px;}
+.dmrTop1-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 5px;}
+.dmrTop2-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 5px;}
+.dmrTop2-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 5px;}
+.dmrTop3-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 20px;}
+.dmrTop3-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 20px;}
+.dmrTop4-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop4-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop5-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop5-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop6-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop6-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop7-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop7-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop8-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop8-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+/*End DMR*/
+
+
+/*.stRole{ width: 3em;}
+.stName{ width: 3em;}
+.stScheduleTime
+.stTimeStart{ width: 6em;}
+.stTimeOff
+.stHours
+.stTotalTip
+*/
+
+
+th { padding-left: 10px;}
+td { padding-left: 10px;}
+
+.shiftRoles{width: 7em; padding-right:0; padding-left:.2em}
+.shiftEmpName{width: 7em; padding-right:0; padding-left:.2em}
+.shiftScheduleTime{width:7em; padding-right:0; padding-left:.2em}
+.shiftStartTime{width:6em; padding-right:0; padding-left:.2em}
+.shiftOffTime{width:6em; padding-right:0; padding-left:.2em}
+.shiftHours{width:3em; padding-right:0; padding-left:.2em}
+.shiftTips{width:4em; padding-right:0; padding-left:.2em}
+
+
+
+/* Delete if no impact by 1/13/2021
+.gridReport {display: grid;
+    grid-template-columns: 20% 10% 20% 50%;
+    grid-template-areas:
+    "report1-1 report1-2 report1-3 report1-4"
+    "report2-1 report2-2 report2-3 report2-4"
+    }
+*/
+
+
+
+/*add employee */
+.btnRemoveEmp {
+   border-color: rgb(255, 100, 100);
+   color: rgb(255, 100, 100);
+   height: 5rem;
+   widthd: 30rem;
+   font-size:200%;
+   /*padding-bottom:20px;*/
+}
+
+.btnRemoveEmp:hover { 
+	background-color: rgba(255, 100, 100, 0.5);
+	border-color: rgba(255, 100, 100, 0.5);}
+
+/*.panelEmp {background-color: hsla(0, 100%, 70%, 0.3);}*/
+
+.removeButtonModal {position: relative;
+background-color: rgb(255, 100, 100);
+outline: none !important;
+}
+.removeEmpModal {/*
+position: relative;
+top:30px;*/
+}
+
+
+
+.btnAddEmp {   /*-webkit-tap-highlight-color: transparent;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px, rgba(0, 0, 0, 0.2) 0px 3px 1px -2px;
+  box-sizing: inherit;
+  color: white;
+  background-color: #00bd9a;
+  cursor: pointer;
+  display: inline-block;*/
+  height: 5rem;
+  /*letter-spacing: 0.5px;
+  line-height: 42px;
+  padding: 0px 1rem;
+  pointer-events: all;
+  position: relative;
+  text-decoration-line: none;
+  text-transform: uppercase;
+  vertical-align: middle;*/
+  width: 30rem;
+  font-size:200%;
+}
+
+
+.addButtonModal {position: relative;
+background-color: rgb(150, 255, 100);
+outline: none !important;}
+
+
+
+
+/*Added 19 January 2021*/
+#roundDiv{padding-bottom:3px; border-style: outset; border-radius: 10px}
+#objBottom {
+	position: relative;
+	top: 1.5em;
+	left: 2.5em;
+	font-size: 2em;
+	color: white;}
+#logoAlignRight{
+	position: relative;
+	left: 8em;}
+
+/*REPORTS page*/
+.checkboxToRight{ position: relative;
+	left:1em;
+	}
+	
+.reportList{  
+	border-radius: 10px;background-color: rgb(230, 230, 230);
+	padding-bottom:.5em;padding-top:.5em;
+	left:3em;}
+.colHeadingRes{
+	text-align: center;
+	font-size: .75em;
+	}
+.indexWidth{
+	width:3em;
+	}
+.boxInMiddle{
+	text-align: center;
+	}
+
+/*Added 26 January 2021 */
+.screenshot {
+  height: 10em;
+  width: 12em;
+  margin-right: 1em;
+}

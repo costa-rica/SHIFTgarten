@@ -1,0 +1,5 @@
+version 5.02
+-no duplicate employee names
+-corrected 2021-01-21 DMR (tip) and shift values. Now matches HnS DMR entry for same day.
+-All roles first letter uppercase.
+-display shift hours worked with two decimals on dmr page for each shift

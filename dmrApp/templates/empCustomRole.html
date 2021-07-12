@@ -1,0 +1,166 @@
+{% extends 'layout.html' %}
+<script src="bootstrap-autocomplete.min.js"></script>
+{% block title %}DMR for restaurant was here{% endblock %}
+
+{% block content %}
+
+<!-- Datatable -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
+
+
+
+
+
+<div class='row'>
+	<div class='col-3'><h4>{{ employeeName }}</h4></div>
+	<div class='col-6'></div>
+	 <div class='col-3'><a href="{{ url_for('main.addEmployee', onlyActive=True) }}"><h5>Back to Employees Page</h5></a></div>
+</div>
+</br>
+<form method="POST" action="" enctype="multipart/form-data">
+<div class="mt-4">
+	<table id="proxies" class="display empRolesTable" >
+		<thead>
+			<tr>
+				<th style="width:10%">Role</th>
+				<th style="width:15%">Wage Rate</th>
+				<th style="width:15%">Tip Percentage</th>
+				<th style="width:15%">Restaurant</th>
+				<th >Notes</th>
+				<th style="width:8%"></th>
+				
+			</tr>
+		</thead>
+		<tbody>
+		{% for id, row in zip(empRoleIdList, tableData) %}
+			<tr>
+				{% for index in range(0, len(columnNames)) %}
+					<td>{{row[columnNames[index]]}}</td>
+				{% endfor %}
+				
+				<td>{% if empRolesCount>1 %}<button type="submit" class="btn deactivateBtn" name="deleteRole"
+                            value="{{ 'deleteRole'+'|'+str(id) }}">Remove Role</button>
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+
+		</tbody>
+	</table>
+	</div>
+</form>
+<form method="POST" action="" enctype="multipart/form-data">
+	{{ form.hidden_tag() }}
+	{{ form.csrf_token }}
+	<br/>
+	<h3 id="addRole">Add Role</h3>
+	<hr>
+	Enter custom Role name, Hourly Wage Rate, Tip Percentage for  restaurant or pick from a standard role below.
+	If making a custom role it would be good to label it something simple like kitchen2 for a kitchen staff employee that is so bad
+	we're only going to pay them $2/ hour.</br></br>
+	
+	Tip percent is currently only 100%, 50% or 0. 100% means they get tipped out evenly. 50% is typically reserved for apprentice role.</br></br>
+	<table class="shiftTable empRolesTable">
+		<thead>
+				<th style="width:15%">Role</th>
+				<th style="width:15%">Wage Rate</th>
+				<th style="width:15%">Tip Percentage</th>
+				<th style="width:15%">Restaurant</th>
+				<th >Notes</th>
+				<th style="width:8%"></th>
+			</tr>
+		</thead>
+	<tbody>
+	
+		<tr>
+
+            <td><input type="text" class="addRoleForm form-control-sm addRoleBoxWidth10" name="role" 
+				  required=True value={{ role }}></td>
+			<td><input type="text" class="addRoleForm form-control-sm addRoleBoxWidth10" name="wage"
+				required=True value={{ wage }}></td>
+			<!--<td>{{ form.wage(class="addRoleForm form-control-sm addRoleBoxWidth10") }}</td>-->
+			<td><input type="text" class="addRoleForm form-control-sm addRoleBoxWidth10" name="tipPercent" 
+				list="tipPercentOptions" required=True value={{ tipPercentage }}>
+				<datalist id="tipPercentOptions">
+					<option>100%</option>
+					<option>50%</option>
+					<option>0%</option>
+					</datalist>	
+			</td>
+			<td><input type="text" class="addRoleForm form-control-sm addRoleBoxWidth10" name="restaurant" 
+				list="restaurantList" required=True>
+				<datalist id="restaurantList">
+					{% for i in resPermList %}
+						<option>{{ i }}</option>
+					{% endfor %}
+				</datalist>
+			</td>
+			
+			<td><textarea class="addRoleNoteForm form-control-sm" name="notes" rows="1" placeholder='optional' ></textarea></td>
+			<td><button type="submit" class="btn btn-primary" name="addRole" value="True">Add Role</button></td>
+		</tr>
+	</tbody>
+	</table>
+	Select a standard role to auto-fill cells above or <a href="{{ url_for('main.customEmpRole', stdWage=None, empId= empId)+'#addRole' }}">clear</a>:</br>
+
+	<div class="col-3"><a href="{{ url_for('main.customEmpRole', stdWage='Bartender', empId= empId) +'#addRole' }}"><h5>Fill in for Bartender</h5></a></div>
+	<div class="col-4"><a href="{{ url_for('main.customEmpRole', stdWage='Apprentice', empId= empId) +'#addRole' }}"><h5>Fill in for Apprentice</h5></a></div>
+	<div class="col-3"><a href="{{ url_for('main.customEmpRole', stdWage='Kitchen', empId= empId)+'#addRole' }}"><h5>Fill in for Kitchen</h5></a></div>
+	
+	
+	
+</form>
+
+
+<form method="POST" action="" enctype="multipart/form-data">
+	<br/><br/>
+	<h3>Deactivate (effectively delete) Employee</h3><hr>
+	If employee has worked any past shifts we keep their records and change the employee ID to 999### numbering convention.
+	If employee has never worked shift their name will be deleted entirely.<br/>
+	
+	
+	
+
+	<!-- Trigger the modal with a button -->
+			<button type="button" class="btn deactivateBtn" data-toggle="modal" 
+				data-target="#deactivateEmpModal">Deactivate Employee</button>
+
+	<!-- ADD employee Modal -->
+			<div class="modal fade" id="deactivateEmpModal" role="dialog">
+				<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+				<div class="modal-header">
+				  <h4 class="modal-title">Are you sure you want to deactivate?</h4>
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					Once deactivated this account cannot be reactivated. You can just make a new account if needed.
+					<br/><br/>
+					If the employee was never assigned a shift it will be permenantely deleted.
+
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn removeButtonModal" name="deactivateEmp" value="True">Deactivate Employee</button>
+				</div>
+				</div>
+
+				</div>
+			</div>
+
+</form>
+
+<script type="text/javascript">
+    $('#proxies').DataTable();
+
+</script>
+{% endblock %}

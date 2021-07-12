@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+<script src="bootstrap-autocomplete.min.js"></script>
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<!-- Datatable -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type = "text/javascript"  src="https://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
+
+
+
+<form method="POST" action="" enctype="multipart/form-data"><!--enctype necessary for pics, CS-errors no good-->
+
+
+<div class="mt-4">
+	<table id="proxies" class="display table responsive" style="width: 100%">
+		<thead>
+			<tr>
+				<th>User Name</th>
+				{% for name in restaurantList %}
+					<th><p class='colHeadingRes'>{{name[0]}}</p></th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+		{% for i in users %}
+			<tr>
+			<td class="indexWidth"><p >{{ i }}</p></td>
+				{% for h in range(0, len(restaurantList)) %}
+					<td class='boxInMiddle'>
+					<p ><input type="checkbox" name={{ str(i) +'|'+ str(h+1) }}
+						value=True {{ permDict[str(i) +'|'+ str(h+1)] }}></p>
+					</td>
+				{% endfor %}
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+<button type="submit" class="btn btn-primary" name="updatePermissions" value="True">Update Permissions</button>
+</form>
+<script type="text/javascript">
+    $('#proxies').DataTable();
+</script>
+{% endblock %}

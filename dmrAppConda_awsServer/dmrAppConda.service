@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve dmrApp from conda enviornment
+After=network.target
+
+[Service]
+User=ec2-user
+WorkingDirectory=/home/ec2-user/environments/dmrAppConda
+Environment="PATH=/home/ec2-user/miniconda3/envs/dmrAppConda/bin"
+ExecStart=/home/ec2-user/miniconda3/envs/dmrAppConda/bin/gunicorn -w 3 run:app
+
+[Install]
+WantedBy=multi-user.target

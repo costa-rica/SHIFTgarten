@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+<script src="bootstrap-autocomplete.min.js"></script>
+{% block title %}DMR for restaurant was here{% endblock %}
+
+{% block content %}
+
+<!-- Datatable -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
+
+
+
+
+<div class="row">
+	<div class="col-6">
+		<form method="POST" action="" enctype="multipart/form-data"><!--enctype necessary for pics, CS-errors no good-->
+
+
+	<!-- Trigger the modal with a button -->
+			<button type="button" class="btn btn-outline-info btnAddEmp col-12" data-toggle="modal" data-target="#addEmpModal">Add Anyways</button>
+
+	<!-- ADD employee Modal -->
+			<div class="modal fade" id="addEmpModal" role="dialog">
+				<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+				<div class="modal-header">
+				  <h4 class="modal-title">Add employee</h4>
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="row justify-content-between mb-2">
+						<span class="ml-1">Enter custome employee id:</span>
+						<input type="text" class="float-right mr-5" name="customEmpId" size="20"
+						placeholder='optional'>
+					</div>
+					<div class="row justify-content-between mb-2">
+						<span class="ml-1">Enter new employee name:</span>
+						<input type="text" class="float-right mr-5" name="newEmployeeName" required=True>
+					</div>
+					<div class="row justify-content-between">
+						<span class="ml-1">Enter restaurant name:</span>
+						<input type="text" class="float-right mr-5" name="resName" list="restaurantList"
+							required=True>
+						<datalist id="restaurantList">
+							{% for i in resPermList %}
+								<option>{{ i }}</option>
+							{% endfor %}
+						</datalist>
+					</div>
+
+					<div class="row">
+						<input type="checkbox"  name="Bartender" value="Bartender" class="ml-3">
+						<label for="Bartender" class="ml-1">Bartender</label>
+						<input type="checkbox"  name="Apprentice" value="Apprentice" class="ml-3">
+						<label for="Apprentice" class="ml-1">Apprentice</label>
+
+						<input type="checkbox"  name="Security" value="Security" class="ml-3">
+						<label for="Security" class="ml-1">Security</label>
+						<input type="checkbox"  name="Driver" value="Driver" class="ml-3">
+						<label for="Driver" class="ml-1">Driver</label>
+						<input type="checkbox"  name="Kitchen" value="Kitchen" class="ml-3">
+						<label for="Kitchen" class="ml-1">Kitchen</label>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn addButtonModal" name="addEmployee" value='True'
+					>Welcome aboard!
+					</button>
+				</div>
+				</div>
+
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div class="col-1"></div>
+
+	<div class="col-4 ">
+		<form method="POST" action="" enctype="multipart/form-data"><!--enctype necessary for pics, CS-errors no good-->
+
+		
+		Nevermind we'll just use one of these names
+		<a href="{{ url_for('main.addEmployee', legend='Add Employee',onlyActive='True') }}"><h5>Go Back to Employees</h5></a>
+
+
+		</form>
+	</div>
+
+</div>
+
+<br/>
+<br/>
+
+<div class="row">
+	<div class="column">
+
+		<table id="proxies" class="display table nowrap responsive" style="width: 100%">
+			<thead>
+			<tr>
+				<th style="width:25%"> Employee ID</th>
+				<th style="width:25%"> Employee name</th>
+				<th style="width:25%"> Restaurant (hired by)</th>
+				<th style="width:25%"> Roles</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for row in empTableList %}
+			<tr>
+				{% for i in row %}
+				<td>{{ i }}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+
+</div>
+
+
+<script type="text/javascript">
+    $('#proxies').DataTable();
+
+</script>
+{% endblock %}

@@ -1,0 +1,60 @@
+
+{% extends "layoutNoHrLine.html" %}
+
+{% block content %}
+<div class="siteBgColor">
+<div class="row">
+    <div class="col-9" >
+
+     <p class="mt-5 homeDescription">Shipgarten's daily management report and shift tips calculation system.</br></br>
+	 </p>
+</br></br></br>
+     </div>
+
+    <div class="col-3"><img src="\static\profile_pics\cbc.logo.jpg" alt="..."></div>
+	
+	<div class='reportList homeNote'>
+		<h5><u>Note for Mac Users: </u></h5>Avoid using Safari browser on Mac OS. iPhones with Safari seem to be ok. Chrome and Firefox work fine on Mac.
+		Safari works but dates and times need to be manually entered with the following formats:</br>
+		<ul>
+		<li>date (YYYY-MM-DD)</li>
+		<li>time (HH:MM AM/PM)</li>
+		</ul>
+	</div>
+
+</div>
+<br/><br/><br/><br/><br/><br/>
+{% if current_user.is_authenticated %}
+<a href="{{ url_for('dmr.dashboard') }}"><h5 class="ml-3">dashboard</h5></a>
+<a href="{{ url_for('users.account') }}"><h5 class="ml-3">account</h5></a>
+<a href="{{ url_for('users.logout') }}"><h5 class="ml-3">logout</h5></a>
+<br/><br/><br/>
+<hr>
+<h3>Version updates</h3>
+
+<br/>
+{% for post in posts %}
+    <article class="media content-section rm-border bodyColor">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+        <div class="media-body">
+            <div class="article-metadata">
+			{{ post.author.username }}
+            
+            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+        </div>
+        <h4><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h4>
+        <p class="article-content">{{ post.content }}</p>
+		{% if post.screenshot %}
+		<img class="screenshot" src="{{ url_for('static', filename='screenshots/' + post.screenshot) }}">
+		{% endif %}
+        </div>
+    </article>
+{% endfor %}
+{% else %}
+<a href="{{ url_for('users.login') }}"><h5 class="ml-3">login</h5></a>
+<a href="{{ url_for('users.register') }}"><h5 class="ml-3">register</h5></a>
+<hr>
+
+{% endif %}
+</div>
+{% endblock %}

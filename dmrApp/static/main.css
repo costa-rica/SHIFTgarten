@@ -1,0 +1,331 @@
+body { /*background-color: rgb(150, 150, 150);*/
+  color: #333333;
+  margin-top: 5rem;
+}
+.siteBgColor{ /*background-color: rgb(150, 150, 150);*/
+/* impacts: layout.html on <body, <main 
+/*.mainColor{background-color: rgb(126, 31, 14);}
+.contentColor{background-color: rgb(126, 31, 14);}
+*/}
+
+/*color for nav bar ###Only difference between dev.shiftgarten and shiftgarten*/
+.bg-steel { 
+	background-color: rgb(247, 169, 9);
+  /*background-color: #5f788a;*/
+}
+
+/*color for nav bar*/
+.bg-steel-Danger { 
+	background-color: rgb(247, 0, 0);
+  /*background-color: #5f788a;*/
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+
+
+/* Modify the backgorund color to a maroonish color
+.navbar-custom {
+    background-color: rgb(126, 31, 14);
+    opacity:0.99;
+}*/
+
+
+.content-section { 
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.rm-border { border: none;
+	background: none;}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+/*Corey's classes */
+
+
+/*home page*/
+.homeDescription{ font-size:150%;}
+
+
+/*start Nick miscellaneous*/
+.strokeme {
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.headerInfo{display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-areas:
+"mediaInfo emptySpace headerPic"}
+.headerPic {
+    max-width: 100%;
+    max-height: 100%;}
+/*End Nick miscellaneous*/
+
+
+
+/*Start DMR*/
+.dmrLegend {display:grid;
+grid-template-columns: 40% 1% 25% auto;
+grid-template-areas:
+"dmrLegend1-1 emptySpace dmrLegend1-2 emptySpace"}
+.griddmrTop {display: grid;
+    grid-template-columns: 45% 10% 45%;
+    grid-template-areas:
+    "dmrTop1-1 emptySpace  dmrTop1-2"
+    "dmrTop2-1 emptySpace dmrTop2-2"
+    "dmrTop3-1 emptySpace dmrTop3-2"
+    "dmrTop4-1 emptySpace dmrTop4-2"
+    "dmrTop5-1 emptySpace dmrTop5-2"
+    "dmrTop6-1 emptySpace dmrTop6-2"
+    "dmrTop7-1 emptySpace dmrTop7-2"
+    "dmrTop8-1 emptySpace dmrTop8-2"
+    }
+.dmrTop1-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 5px;}
+.dmrTop1-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 5px;}
+.dmrTop2-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 5px;}
+.dmrTop2-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 5px;}
+.dmrTop3-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 20px;}
+.dmrTop3-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm";
+    margin-bottom: 20px;}
+.dmrTop4-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop4-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop5-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop5-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop6-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop6-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop7-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop7-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop8-1 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+.dmrTop8-2 {display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+    "dmrLabel dmrForm"}
+/*End DMR*/
+
+
+/*.stRole{ width: 3em;}
+.stName{ width: 3em;}
+.stScheduleTime
+.stTimeStart{ width: 6em;}
+.stTimeOff
+.stHours
+.stTotalTip
+*/
+
+
+.shiftTable th { padding-left: 10px;}
+.shiftTable td { padding-left: 10px;}
+
+
+.shiftRoles{width: 7em; padding-right:0; padding-left:.2em}
+.shiftEmpName{width: 7em; padding-right:0; padding-left:.2em}
+.shiftScheduleTime{width:7em; padding-right:0; padding-left:.2em}
+.shiftStartTime{width:8em; padding-right:0; padding-left:.2em}
+.shiftOffTime{width:8em; padding-right:0; padding-left:.2em}
+.shiftHours{width:3em; padding-right:0; padding-left:.2em}
+.shiftTips{width:4em; padding-right:0; padding-left:.2em}
+.shiftWages{width:4em; padding-right:0; padding-left:.2em}
+.tipsAndWages{width:6em; padding-right:0; padding-left:.2em}
+.shiftResList{width:6em; padding-right:0; padding-left:.2em}
+
+
+
+
+/*add employee */
+.btnRemoveEmp {
+   border-color: rgb(255, 100, 100);
+   color: rgb(255, 100, 100);
+   height: 5rem;
+   widthd: 30rem;
+   font-size:200%;
+   /*padding-bottom:20px;*/
+}
+
+.btnRemoveEmp:hover { 
+	background-color: rgba(255, 100, 100, 0.5);
+	border-color: rgba(255, 100, 100, 0.5);}
+
+/*.panelEmp {background-color: hsla(0, 100%, 70%, 0.3);}*/
+
+.removeButtonModal {position: relative;
+background-color: rgb(255, 100, 100);
+outline: none !important;
+}
+.removeEmpModal {/*
+position: relative;
+top:30px;*/
+}
+
+
+.btnAddEmp {   
+  height: 5rem;
+  width: 30rem;
+  font-size:200%;
+}
+
+.addButtonModal {position: relative;
+background-color: rgb(150, 255, 100);
+outline: none !important;}
+
+
+/*Added 19 January 2021*/
+#roundDiv{padding-bottom:3px; border-style: outset; border-radius: 10px}
+#objBottom {
+	position: relative;
+	top: 1.5em;
+	left: 2.5em;
+	font-size: 2em;
+	color: white;}
+#logoAlignRight{
+	position: relative;
+	left: 8em;}
+
+/*REPORTS page*/
+.checkboxToRight{ position: relative;
+	left:1em;
+	}
+	
+.reportList{  
+	border-radius: 10px;background-color: rgb(230, 230, 230);
+	padding-bottom:.5em;padding-top:.5em;
+	left:3em;}
+.colHeadingRes{
+	text-align: center;
+	font-size: .75em;
+	}
+.indexWidth{
+	width:3em;
+	}
+.boxInMiddle{
+	text-align: center;
+	}
+
+/*Added 26 January 2021 */
+.screenshot {
+  height: 10em;
+  width: 12em;
+  margin-right: 1em;
+}
+
+/*7 February 2021 Edit Employee Roles */
+.empRolesTable {
+	text-align: center;
+}
+
+.addRoleForm {	height: 2em;}
+.addRoleBoxWidth10 {width: 100%;}
+.addRoleNoteForm { height: 2.3em;}
+
+/*11 February EmployeeRoles stuff*/
+.deactivateBtn {background-color: rgb(230, 100, 100);}
+
+.homeNote{padding-left: 1em;}
