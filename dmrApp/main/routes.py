@@ -526,7 +526,7 @@ def userPermissions():
     
     #build a userPermDict of username : List of rest with access
     userPermDict=buildUserPermDict(userObjList)
-    
+
     #build permDict from userPermDict that is userPermDict(key + value):'checked'
     permDict={}
     for h,i in userPermDict.items():
@@ -536,8 +536,20 @@ def userPermissions():
 
     if request.method == 'POST':
         formDict = request.form.to_dict()
+        
+        #check that all users are in formDict
+        formDict_keys_parsed=[key[:-2] for key in formDict.keys()]
+        print('formDict_keys_parsed::::', formDict_keys_parsed)
+        
+        for user in userObjList:
+            if user.username not in formDict_keys_parsed:
+                print('user flagged:',user.username)
+                flash('All users must have at least one restaurant','warning')
+                return redirect(url_for('main.userPermissions'))
+        
         if formDict.get('updatePermissions'):
             permDictNew={}
+            
             for user in userObjList:
                 firstFlag=True
                 for resId_minusOne in range(len(restaurantList)):
@@ -547,10 +559,11 @@ def userPermissions():
                             firstFlag=False
                         else:
                             permDictNew[user.username]=permDictNew[user.username] +','+ str(resId_minusOne + 1)
-                            
+                        print('permDictNew:::',permDictNew)
                 user.permission=permDictNew[user.username]
                 db.session.commit()
-
+                print('formDict::::', formDict)
+                
         return redirect(url_for('main.userPermissions'))
     return render_template('userPermissions.html',legend=legend,users=users,
         restaurantList=restaurantList, len=len, str=str, permDict=permDict)

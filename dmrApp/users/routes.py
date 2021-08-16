@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 from flask import render_template, url_for, redirect, flash, request, abort, session,\
-    Response
+    Response, current_app
 from dmrApp import db, bcrypt, mail
 from dmrApp.models import Dmrs, Employees, Employeeroles, Post, Restaurants, Shifts, User
 from dmrApp.users.forms import RegistrationForm, LoginForm, UpdateAccountForm, \
@@ -43,10 +43,20 @@ def register():
 
 @users.route("/login", methods=["GET","POST"])
 def login():
-    
+
+    #guest credentials from config
+    guest_email=current_app.config['GUEST_EMAIL']
+    guest_password=current_app.config['GUEST_PASSWORD']
+
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
+        
     form = LoginForm()
+    email_entry=request.args.get('email_entry')
+    pass_entry=request.args.get('pass_entry')
+    if request.args.get('email_entry'):
+        form.email.data=request.args.get('email_entry')
+        form.password.data=request.args.get('pass_entry')
     if form.validate_on_submit():
         # if form.email.data == 'nickapeed@yahoo.com' and form.password.data == 'Q':
         #     flash('Success!', 'success')
@@ -63,7 +73,8 @@ def login():
             #^^^ another good thing turnary condition ^^^
         else:
             flash('Login unsuccessful', 'danger')
-    return render_template('login.html', title='Login', form=form)
+    return render_template('login.html', title='Login', form=form,guest_email=guest_email,
+        guest_password=guest_password)
 
     
 

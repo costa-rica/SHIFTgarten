@@ -8,7 +8,7 @@ from dmrApp.models import User, Restaurants, Employeeroles
 from flask_login import current_user
 from datetime import datetime
 from dmrApp import db
-
+from wtforms.widgets import PasswordInput
 
 
 class RegistrationForm(FlaskForm):
@@ -38,7 +38,9 @@ class RegistrationForm(FlaskForm):
 class LoginForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    # password = PasswordField('Password', validators=[DataRequired()])
+    #Thius is used for guest login
+    password = StringField('Password', widget=PasswordInput(hide_value=False), validators=[DataRequired()])
     remember = BooleanField('Remember me')
     submit = SubmitField('Login')
 

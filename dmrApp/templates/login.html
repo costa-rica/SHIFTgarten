@@ -51,6 +51,11 @@
                 <a href="{{ url_for('users.reset_password') }}">forgot password?</a>
             </small>
         </div>
+		
+		<div class='login_as_guest'>
+			<a href="{{ url_for('users.login', email_entry=guest_email, pass_entry=guest_password ) }}">
+				Login as guest</a>
+		</div>
 
     </form>
 </div>

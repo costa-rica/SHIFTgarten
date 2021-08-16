@@ -129,7 +129,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(100),nullable=False, default='default.jpg')
     password = db.Column(db.String(100), nullable=False)
     timeStamp = db.Column(db.DateTime, default=datetime.now)
-    permission = db.Column(db.Text)
+    permission = db.Column(db.Text, default="3")
     theme = db.Column(db.Text)
     posts = db.relationship('Post', backref='author', lazy=True)
     dmrsEntry = db.relationship('Dmrs', backref='dmrUser', lazy=True)

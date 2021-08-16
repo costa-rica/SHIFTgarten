@@ -22,3 +22,5 @@ class Config:
     MAIL_PASSWORD = config.get('MAIL_PASSWORD_CBC')
     MAIL_USERNAME = config.get('MAIL_USERNAME_CBC')
     DEBUG = True
+    GUEST_EMAIL = config.get('GUEST_EMAIL')
+    GUEST_PASSWORD = config.get('GUEST_PASSWORD')
